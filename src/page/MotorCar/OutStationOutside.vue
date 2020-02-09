@@ -95,6 +95,7 @@
     <van-dialog v-model="show" title="登记成功" :showConfirmButton="false">
       <van-loading v-if="!codeSrc" type="spinner" style="width: 200px;height:200px"/>
       <img v-if="codeSrc" :src="codeSrc" style="width: 200px;height:200px">
+      <van-button size="small" type="info" @click="refresh" style="margin:20px auto 10px auto;width: 40%;display:block;">刷新</van-button>
     </van-dialog>
   </div>
 </template>
@@ -187,6 +188,9 @@ export default {
   methods: {
     ...mapActions([
     ]),
+    refresh () {
+      this.codeSrc = this.codeSrcCopy + '?time=' + (new Date()).getTime()
+    },
     onConfirmCar (value, index) {
       this.car = value
       this.onCancelCar()
@@ -455,10 +459,9 @@ export default {
       }).then(_res => {
         switch (_res.data.code) {
           case 0:
+            this.codeSrcCopy = _res.data.id
+            this.codeSrc = _res.data.id
             this.show = true
-            setTimeout(() => {
-              this.codeSrc = _res.data.id
-            }, 2000)
             // Dialog.alert({
             //   title: '出站登记成功！',
             //   message: '登记时间：' + formatTime(new Date())
@@ -496,10 +499,9 @@ export default {
       }).then(_res => {
         switch (_res.data.code) {
           case 0:
+            this.codeSrcCopy = _res.data.id
+            this.codeSrc = _res.data.id
             this.show = true
-            setTimeout(() => {
-              this.codeSrc = _res.data.id
-            }, 2000)
             // Dialog.alert({
             //   title: '出站登记成功！',
             //   message: '登记时间：' + formatTime(new Date())
