@@ -443,14 +443,14 @@ export default {
       }
     },
     submitSign () {
-      // if (this.car === '请选择' || !this.name || !this.sex || !this.ID || !this.phone || !this.carNo || !this.Tt || !this.Ct || !this.St_M || !this.Qt_M || !this.Zt_M || !this.addr_D || !this.addr_M || !this.ifContact || this.symptom === '请选择') {
-      //   Toast({
-      //     duration: 1500,
-      //     forbidClick: true,
-      //     message: '请将信息填写完整!'
-      //   })
-      //   return false
-      // }
+      if (this.car === '请选择' || !this.name || !this.sex || !this.ID || !this.phone || !this.carNo || this.symptom === '请选择' || this.Tt === '请选择' || this.Ct === '请选择' || this.St_M === '请选择' || this.Qt_M === '请选择' || this.Zt_M === '请选择' || !this.addr_D || !this.addr_M || !this.ifContact || !this.temperature || !this.secondName || !this.secondCompany || !this.secondPhone || !this.work_address) {
+        Toast({
+          duration: 1500,
+          forbidClick: true,
+          message: '请将信息填写完整!'
+        })
+        return false
+      }
       send({
         name: '/signInInsert?ischangzhu=0&userid=' + this.openid + '&bustype=' + this.car + '&username=' + this.name + '&fsex=' + this.sex + '&idnumber=' + this.ID + '&fmobile=' + this.phone + '&iswuhan=' + (this.ifContact === '有' ? 1 : 0) + '&areaid=' + this.AreaId  + '&ftype=' + this.ftype + '&=mdd' + this.Tt + this.Ct + this.addr_D + '&cfd=' + this.St_M + this.Zt_M  + this.Qt_M + this.addr_M + '&bus_box=' + this.carNo + '&shenti_type=' + this.symptom + '&second_contact=' + this.secondName + '&work_unit=' +this.secondCompany + '&work_phone=' + this.secondPhone + '&work_address=' + this.secondAddr + '&thisftemp=' + this.temperature + '&code_type=' + this.inOrOutP,
         method: 'POST',
@@ -462,15 +462,8 @@ export default {
             this.codeSrcCopy = _res.data.id
             this.codeSrc = _res.data.id
             this.show = true
-            // Dialog.alert({
-            //   title: '出站登记成功！',
-            //   message: '登记时间：' + formatTime(new Date())
-            // }).then(() => {
-            //   // on close
-            // })
             break
           default:
-            // 身份证错误
             Toast({
               duration: 1500,
               forbidClick: true,
@@ -483,14 +476,14 @@ export default {
       })
     },
     submitInsert () {
-      // if (this.car === '请选择' || !this.name || !this.sex || !this.ID || !this.phone || !this.carNo || !this.Tt || !this.Ct || !this.St_M || !this.Qt_M || !this.Zt_M || !this.addr_D || !this.addr_M || !this.ifContact || this.symptom === '请选择') {
-      //   Toast({
-      //     duration: 1500,
-      //     forbidClick: true,
-      //     message: '请将信息填写完整!'
-      //   })
-      //   return false
-      // }
+      if (this.car === '请选择' || !this.name || !this.sex || !this.ID || !this.phone || !this.carNo || this.symptom === '请选择' || this.Tt === '请选择' || this.Ct === '请选择' || this.St_M === '请选择' || this.Qt_M === '请选择' || this.Zt_M === '请选择' || !this.addr_D || !this.addr_M || !this.ifContact || !this.temperature || !this.secondName || !this.secondCompany || !this.secondPhone || !this.work_address) {
+        Toast({
+          duration: 1500,
+          forbidClick: true,
+          message: '请将信息填写完整!'
+        })
+        return false
+      }
       send({
         name: '/userinsert?ischangzhu=0&open_id=' + this.openid + '&bustype=' + this.car + '&username=' + this.name + '&fsex=' + this.sex + '&idnumber=' + this.ID + '&fmobile=' + this.phone + '&iswuhan=' + (this.ifContact === '有' ? 1 : 0) + '&areaid=' + this.AreaId  + '&ftype=' + this.ftype + '&mdd=' + this.Tt + this.Ct + this.addr_D + '&cfd=' + this.St_M + this.Zt_M  + this.Qt_M + this.addr_M + '&bus_box=' + this.carNo + '&shenti_type=' + this.symptom + '&second_contact=' + this.secondName + '&work_unit=' +this.secondCompany + '&work_phone=' + this.secondPhone + '&work_address=' + this.secondAddr + '&thisftemp=' + this.temperature + '&code_type=' + this.inOrOutP,
         method: 'POST',
@@ -502,15 +495,8 @@ export default {
             this.codeSrcCopy = _res.data.id
             this.codeSrc = _res.data.id
             this.show = true
-            // Dialog.alert({
-            //   title: '出站登记成功！',
-            //   message: '登记时间：' + formatTime(new Date())
-            // }).then(() => {
-            //   // on close
-            // })
             break
           default:
-            // 身份证错误
             Toast({
               duration: 1500,
               forbidClick: true,

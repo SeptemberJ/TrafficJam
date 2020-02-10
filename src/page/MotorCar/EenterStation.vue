@@ -442,14 +442,14 @@ export default {
       }
     },
     submitSign () {
-      // if (this.car === '请选择' || !this.name || !this.sex || !this.ID || !this.phone || !this.carNo || !this.St || !this.Qt || !this.Zt || !this.St_M || !this.Qt_M || !this.Zt_M || !this.addr_D || !this.addr_M || !this.ifContact || !this.symptom) {
-      //   Toast({
-      //     duration: 1500,
-      //     forbidClick: true,
-      //     message: '请将信息填写完整!'
-      //   })
-      //   return false
-      // }
+      if (this.car === '请选择' || !this.name || !this.sex || !this.ID || !this.phone || !this.carNo || this.symptom === '请选择' || this.Tt === '请选择' || this.Ct === '请选择' || this.St_M === '请选择' || this.Qt_M === '请选择' || this.Zt_M === '请选择' || !this.addr_D || !this.addr_M || !this.ifContact || !this.temperature) {
+        Toast({
+          duration: 1500,
+          forbidClick: true,
+          message: '请将信息填写完整!'
+        })
+        return false
+      }
       send({
         name: '/signInInsert?ischangzhu=0&userid=' + this.openid + '&bustype=' + this.car + '&username=' + this.name + '&fsex=' + this.sex + '&idnumber=' + this.ID + '&fmobile=' + this.phone + '&iswuhan=' + (this.ifContact === '有' ? 1 : 0) + '&areaid=' + this.AreaId  + '&ftype=' + this.ftype + '&cfd=' + this.Tt + this.Ct + this.addr_D + '&mdd=' + this.St_M + this.Zt_M  + this.Qt_M + this.addr_M + '&bus_box=' + this.carNo + '&shenti_type=' + this.symptom + '&thisftemp=' + this.temperature,
         method: 'POST',
@@ -461,35 +461,27 @@ export default {
             this.codeSrcCopy = _res.data.id
             this.codeSrc = _res.data.id
             this.show = true
-            // Dialog.alert({
-            //   title: '进站登记成功！',
-            //   message: '登记时间：' + formatTime(new Date())
-            // }).then(() => {
-            //   // on close
-            // })
             break
           default:
-            // 身份证错误
             Toast({
               duration: 1500,
               forbidClick: true,
               message: _res.data.message + '!'
             })
         }
-        // this.updateOpenId()
       }).catch((_res) => {
         console.log(_res)
       })
     },
     submitInsert () {
-      // if (this.car === '请选择' || !this.name || !this.sex || !this.ID || !this.phone || !this.carNo || !this.St || !this.Qt || !this.Zt || !this.St_M || !this.Qt_M || !this.Zt_M || !this.addr_D || !this.addr_M || !this.ifContact || !this.symptom) {
-      //   Toast({
-      //     duration: 1500,
-      //     forbidClick: true,
-      //     message: '请将信息填写完整!'
-      //   })
-      //   return false
-      // }
+      if (this.car === '请选择' || !this.name || !this.sex || !this.ID || !this.phone || !this.carNo || this.symptom === '请选择' || this.Tt === '请选择' || this.Ct === '请选择' || this.St_M === '请选择' || this.Qt_M === '请选择' || this.Zt_M === '请选择' || !this.addr_D || !this.addr_M || !this.ifContact || !this.temperature) {
+        Toast({
+          duration: 1500,
+          forbidClick: true,
+          message: '请将信息填写完整!'
+        })
+        return false
+      }
       send({
         name: '/userinsert?ischangzhu=0&open_id=' + this.openid + '&bustype=' + this.car + '&username=' + this.name + '&fsex=' + this.sex + '&idnumber=' + this.ID + '&fmobile=' + this.phone + '&iswuhan=' + (this.ifContact === '有' ? 1 : 0) + '&areaid=' + this.AreaId  + '&ftype=' + this.ftype + '&cfd=' + this.Tt + this.Ct + this.addr_D + '&mdd=' + this.St_M + this.Zt_M  + this.Qt_M + this.addr_M + '&bus_box=' + this.carNo + '&shenti_type=' + this.symptom + '&thisftemp=' + this.temperature,
         method: 'POST',
@@ -501,15 +493,8 @@ export default {
             this.codeSrcCopy = _res.data.id
             this.codeSrc = _res.data.id
             this.show = true
-            // Dialog.alert({
-            //   title: '进站登记成功！',
-            //   message: '登记时间：' + formatTime(new Date())
-            // }).then(() => {
-            //   // on close
-            // })
             break
           default:
-            // 身份证错误
             Toast({
               duration: 1500,
               forbidClick: true,
